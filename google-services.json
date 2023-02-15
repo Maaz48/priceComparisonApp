@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "163592629827",
+    "project_id": "pricecomapre2023",
+    "storage_bucket": "pricecomapre2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163592629827:android:2d398763bd6fdb19ebaef6",
+        "android_client_info": {
+          "package_name": "com.huzaifaimran.priceComparisonApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163592629827-pre5fjmg0j1rel1pgep8mchbq7t3ucpr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.huzaifaimran.priceComparisonApp",
+            "certificate_hash": "ac260476898f729d9310a39694ad0a52bba9f3c0"
+          }
+        },
+        {
+          "client_id": "163592629827-3a4jagkr54e8fe1ha5ickte29ru9hlis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH7VxBBqIv0JzyZLw1KtI-4P4xa8RCdLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163592629827-3a4jagkr54e8fe1ha5ickte29ru9hlis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
