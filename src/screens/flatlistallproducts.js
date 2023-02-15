@@ -1,5 +1,12 @@
 import React, { memo } from "react";
-import { FlatList, View, Animated, Pressable, Dimensions } from "react-native";
+import {
+  FlatList,
+  View,
+  Animated,
+  Pressable,
+  Dimensions,
+  Image,
+} from "react-native";
 import TextComp from "../components/TextComp";
 
 const Flatlistallproducts = ({ allproductList, navigation }) => {
@@ -46,7 +53,8 @@ const Flatlistallproducts = ({ allproductList, navigation }) => {
                 textValue={item.productName}
                 style={{
                   fontSize: 20,
-                  color: "#FE0D64",
+                  color: "black",
+                  fontWeight: "100",
                   fontFamily: "JakartaSans-Regular",
                 }}
               />
@@ -54,17 +62,18 @@ const Flatlistallproducts = ({ allproductList, navigation }) => {
                 textValue={item.category}
                 style={{
                   fontSize: 15,
-                  color: "#FE0D64",
+                  color: "black",
+                  fontWeight: "100",
                   fontFamily: "JakartaSans-Regular",
                 }}
               />
             </View>
 
-            {/* <Image
+            <Image
               style={{ height: 50, width: 50 }}
               resizeMode="cover"
-              source={require("../../assets/images/bread.png")}
-            /> */}
+              source={{ uri: `https://images-rssh.onrender.com/${item.image}` }}
+            />
           </View>
         </Pressable>
       </Animated.View>

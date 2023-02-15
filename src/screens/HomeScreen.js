@@ -7,7 +7,7 @@ import {
   Dimensions,
   BackHandler,
 } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import {
   Appbar,
   useTheme,
@@ -19,6 +19,8 @@ import ContextRapper from "../helper/context";
 /////////////COMPONENTS ////////////
 import Button from "../components/Button";
 import TextComp from "../components/TextComp";
+import * as Device from "expo-device";
+import * as Notifications from "expo-notifications";
 
 const { height, width } = Dimensions.get("window");
 
@@ -31,19 +33,116 @@ const HomeScreen = ({ navigation }) => {
   }, []);
 
   ///////////////////// SNACKBAR ................
+
   const [visible, setVisible] = React.useState(false);
 
-  React.useEffect(() => {
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      () => {
-        BackHandler.exitApp();
-        return true;
-      }
-    );
+  const url = "https://server-three-weld.vercel.app/";
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const [allNotifications, setallNotifications] = useState([]);
+  const [allCoupouns, setallCoupouns] = useState([]);
+  const notificationListener = useRef();
 
-    return () => backHandler.remove();
-  }, []);
+  async function registerForPushNotificationsAsync() {
+    let token;
+    if (Device.isDevice) {
+      const { status: existingStatus } =
+        await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+      if (finalStatus !== "granted") {
+        alert("Failed to get push token for push notification!");
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+    } else {
+      alert("Must use physical device for Push Notifications");
+    }
+
+    return token;
+  }
+
+  useEffect(() => {
+    ////////////////////////////// GET ALL COUPOUNS //////////////////////
+    fetch(`${url}copouns`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setallCoupouns(data);
+      });
+    ////////////////////////////// GET ALL COUPOUNS //////////////////////
+
+    /////////////////////////////// GET ALL NOTIFICATIONS ///////////////////
+    fetch(`${url}showNotifications`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setallNotifications(data);
+      });
+    /////////////////////////////////// GET TOKEN OF DEVICE ////////////////////
+    registerForPushNotificationsAsync()
+      .then((token) => setExpoPushToken(token))
+      .then(() => {
+        fetch(`${url}tokenList`)
+          .then((data) => {
+            return data.json();
+          })
+          .then((res) => {
+            ///////////// get all tokens //////////
+            let eachToken = [];
+            if (expoPushToken.length < 2) {
+              registerForPushNotificationsAsync().then((token) =>
+                setExpoPushToken(token)
+              );
+              return console.log("token is null......");
+            }
+            res.map((values) => {
+              if (values.pushToken == expoPushToken) {
+                eachToken.push(values);
+              }
+            });
+
+            if (eachToken.length >= 1) {
+              return console.log("token already registered");
+            }
+
+            if (eachToken.length < 1) {
+              fetch(`${url}push-token`, {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({ pushtoken: expoPushToken }),
+              })
+                .then((data) => {
+                  return data.json();
+                })
+                .then((res) => {
+                  console.log("notification token has been send...");
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              console.log("asdasdsadasdzxnbcbmnmxcbzmxcuasdka");
+            }
+          })
+          .catch((err) => {
+            console.log("can not fetch all tokens");
+          });
+      })
+      .catch((err) => {
+        console.log("token cant be generated....");
+      });
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+      });
+    locationFunc();
+  }, [expoPushToken, notification]);
 
   ///////////////////// REACT ANTIVE PAPER //////////////
   const theme = useTheme();

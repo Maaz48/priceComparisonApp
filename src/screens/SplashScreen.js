@@ -31,7 +31,7 @@ const SplashScreen = (props) => {
         duration: 1000,
         useNativeDriver: false,
       }).start(() => {
-        props.navigation.navigate("WelcomeScreen");
+        props.navigation.replace("WelcomeScreen");
       });
     });
   }, []);

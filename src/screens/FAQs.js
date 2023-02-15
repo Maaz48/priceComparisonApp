@@ -28,24 +28,25 @@ const FAQs = ({ navigation }) => {
   const [activeClass, setActiveClass] = useState({});
   const sections = [
     {
-      title: "Design your FAQ page.",
+      title: "What is price comparison using object detection application?",
       content:
-        "Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen",
+        "Price comparison using object detection application is a tool that uses machine learning to identify products in images or videos, and compare their prices across different retailers or service providers..",
     },
     {
-      title: "Publish the FAQ page on your site.",
+      title: "How does price comparison application work?",
       content:
-        "Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen",
+        "Price comparison application works by collecting data from different retailers or service providers and displaying it in a format that is easy to compare. Users can enter a product or service they are interested in, and the application will provide a list of prices from various retailers or service providers, along with information about the product or service.",
     },
     {
-      title: "Monitor the FAQ page's performance.",
+      title:
+        "Can I buy products or services through price comparison application?",
       content:
-        "Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen",
+        "No! You cannot buy products through this application right now, but we will be adding a feature to buy products within the application in the near future. It will take you to the seller’s website to buy the particular item",
     },
     {
-      title: "Include space for live support options.",
+      title: "Can I compare prices for products or services in my local area?",
       content:
-        "Dark vector background with gradient mesh.Wallpaper in trendy colors.Modern screen",
+        "Yes! Our price comparison application offers users to search for products or services in their local area. This can be helpful for finding deals on items that may be available at nearby stores.",
     },
   ];
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
+
 import {
   MD3LightTheme as DefaultTheme,
   Provider as PaperProvider,
@@ -208,17 +209,12 @@ function App() {
                 eachToken.push(values);
               }
             });
-            console.log(
-              "data...................",
-              eachToken,
-              "asdsadsadsadsad"
-            );
+
             if (eachToken.length >= 1) {
               return console.log("token already registered");
             }
 
             if (eachToken.length < 1) {
-              console.log("hello world.......................");
               fetch(`${url}push-token`, {
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -231,7 +227,6 @@ function App() {
                   console.log("notification token has been send...");
                 })
                 .catch((err) => {
-                  console.log(err);
                   console.log(err);
                 });
             } else {
@@ -332,9 +327,9 @@ function App() {
       <PaperProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Splash"
+            // initialRouteName="Splash"
             screenOptions={{ headerShown: false }}
-            backBehavior="initialRoute"
+            // backBehavior="initialRoute"
           >
             <Stack.Screen
               name="Splash"

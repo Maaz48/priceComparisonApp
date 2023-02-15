@@ -29,6 +29,7 @@ const EachProductPrice = ({ navigation, route }) => {
   ///////////////// FLATLIST ITEM VIEW ///////////////
   const itemView = (props) => {
     const { item, index } = props;
+
     return (
       <Surface
         elevation={2}
@@ -116,6 +117,7 @@ const EachProductPrice = ({ navigation, route }) => {
           style={{
             position: "absolute",
             top: 0,
+            left: 2,
             backgroundColor: "#FD0C63",
             width: "50%",
             height: "100%",
@@ -154,11 +156,18 @@ const EachProductPrice = ({ navigation, route }) => {
           </Appbar.Header>
 
           <SafeAreaView style={{ flex: 1 }}>
-            <View style={{ flex: 0.4, backgroundColor: "red" }}>
+            <View
+              style={{
+                flex: 0.4,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Image
                 source={{
-                  uri: `https://server-three-weld.vercel.app/${product.image}`,
+                  uri: `https://images-rssh.onrender.com/${product.image}`,
                 }}
+                style={{ width: "100%", height: "100%", resizeMode: "contain" }}
               />
             </View>
             <FlatList

@@ -21,7 +21,12 @@ const AboutUs = ({ navigation }) => {
   return (
     <SafeAreaProvider>
       <View
-        style={{ flex: 0.15, justifyContent: "center", paddingHorizontal: 10 }}
+        style={{
+          marginTop: 60,
+          marginBottom: 10,
+          justifyContent: "center",
+          paddingHorizontal: 10,
+        }}
       >
         <TextComp
           textValue="About Us"
@@ -48,14 +53,14 @@ const AboutUs = ({ navigation }) => {
         <View style={{ flex: 0.5, justifyContent: "center" }}>
           <View
             style={{
-              height: 40,
+              height: 50,
               maxHeight: 60,
               width: "100%",
               backgroundColor: "#e0e0e0",
               borderRadius: 10,
               paddingHorizontal: 10,
               justifyContent: "center",
-              marginBottom: 5,
+              marginBottom: 15,
             }}
           >
             <TextComp
@@ -67,13 +72,19 @@ const AboutUs = ({ navigation }) => {
               }}
             />
           </View>
-          <View>
+          <View
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <View
               style={{
                 display: "flex",
                 flexDirection: "row",
                 width: "100%",
-                height: "22%",
+                height: "21%",
               }}
             >
               <View
@@ -115,7 +126,7 @@ const AboutUs = ({ navigation }) => {
                 display: "flex",
                 flexDirection: "row",
                 width: "100%",
-                height: "22%",
+                height: "21%",
               }}
             >
               <View
@@ -164,7 +175,7 @@ const AboutUs = ({ navigation }) => {
                 display: "flex",
                 flexDirection: "row",
                 width: "100%",
-                height: "22%",
+                height: "21%",
               }}
             >
               <View
@@ -213,7 +224,7 @@ const AboutUs = ({ navigation }) => {
                 display: "flex",
                 flexDirection: "row",
                 width: "100%",
-                height: "22%",
+                height: "21%",
               }}
             >
               <View
@@ -251,7 +262,7 @@ const AboutUs = ({ navigation }) => {
               </View>
             </View>
           </View>
-          <View style={{ height: "12%" }}>
+          <View style={{ height: 40 }}>
             <TextComp
               textValue="Supervised By: Miss Yusra Khalid"
               style={{
