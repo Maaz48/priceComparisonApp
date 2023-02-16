@@ -30,10 +30,10 @@ const DealsAndCoupons = ({ navigation }) => {
     setmasterData(allCoupouns);
   }, []);
 
-  const getPriceOFThisProduct = (product) => {
-    eachProductScreenData.singleProduct(product);
-    navigation.navigate("productPrice");
-  };
+  // const getPriceOFThisProduct = (product) => {
+  //   eachProductScreenData.singleProduct(product);
+  //   navigation.navigate("productPrice");
+  // };
 
   const itemView = (props) => {
     const { item } = props;
@@ -48,7 +48,6 @@ const DealsAndCoupons = ({ navigation }) => {
         }}
       >
         <Pressable
-          onPress={() => getPriceOFThisProduct(item)}
           style={{
             backgroundColor: item.isAvailable ? "#FE0D64" : "#F3F3F3",
             borderRadius: 30,

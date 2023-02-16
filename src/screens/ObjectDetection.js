@@ -90,7 +90,6 @@ export default function ObjectDetection({ navigation }) {
                   navigation.navigate("productPrice", { product });
                 }
               });
-              console.log("hello world", data.predictions);
             })
             .catch((error) => {
               setisModelLoad(false);

@@ -99,7 +99,7 @@ const HomeScreen = ({ navigation }) => {
               registerForPushNotificationsAsync().then((token) =>
                 setExpoPushToken(token)
               );
-              return console.log("token is null......");
+              return "";
             }
             res.map((values) => {
               if (values.pushToken == expoPushToken) {
@@ -108,7 +108,7 @@ const HomeScreen = ({ navigation }) => {
             });
 
             if (eachToken.length >= 1) {
-              return console.log("token already registered");
+              return "";
             }
 
             if (eachToken.length < 1) {
@@ -127,7 +127,7 @@ const HomeScreen = ({ navigation }) => {
                   console.log(err);
                 });
             } else {
-              console.log("asdasdsadasdzxnbcbmnmxcbzmxcuasdka");
+              console.log("...");
             }
           })
           .catch((err) => {

@@ -129,15 +129,12 @@ function App() {
             setVisible(false);
           }, 7000);
           setlocationCall(false);
-          console.log("location nahi mili ha abhi tak.....");
           return;
         }
         Location.getCurrentPositionAsync({})
           .then((data) => {
             let { coords } = data;
-            console.log(
-              "coords mil gy hain mgr locatio nahi mili ha abhi tak...."
-            );
+
             fetch(
               `https://api.opencagedata.com/geocode/v1/json?q=${coords.latitude}+${coords.longitude}&key=5a68a33c974a402fb9dc5c29e15be722`
             )
@@ -145,7 +142,6 @@ function App() {
                 return data.json();
               })
               .then((res) => {
-                console.log("location and coords 2no mil gy hain.....");
                 setLocation(res.results[0].formatted);
                 setlocationCall(true);
               })
@@ -202,7 +198,7 @@ function App() {
               registerForPushNotificationsAsync().then((token) =>
                 setExpoPushToken(token)
               );
-              return console.log("token is null......");
+              return "";
             }
             res.map((values) => {
               if (values.pushToken == expoPushToken) {
@@ -211,7 +207,7 @@ function App() {
             });
 
             if (eachToken.length >= 1) {
-              return console.log("token already registered");
+              return "";
             }
 
             if (eachToken.length < 1) {
@@ -230,7 +226,7 @@ function App() {
                   console.log(err);
                 });
             } else {
-              console.log("asdasdsadasdzxnbcbmnmxcbzmxcuasdka");
+              console.log("...");
             }
           })
           .catch((err) => {
@@ -263,7 +259,7 @@ function App() {
       })
       .then((data) => {
         setallProduct(data);
-        console.log(data.length);
+        
       });
     if (windowWidth < 400) {
       setheadingFontSize(22);
